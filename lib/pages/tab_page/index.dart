@@ -59,29 +59,36 @@ class _HomaPageState extends State<HomaPage> {
           BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: '图表'),
           BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: '记一笔'),
           BottomNavigationBarItem(icon: Icon(Icons.business), label: '社区'),
-          BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: '我的'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle), label: '我的'),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: new Builder(
+      floatingActionButton: Builder(
         builder: (BuildContext context) => Container(
           padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(50),
-            boxShadow: [BoxShadow(color: Color(0x33000000), offset: Offset(0, -1), blurRadius: 1.0, spreadRadius: -1)],
+            boxShadow: [
+              BoxShadow(
+                  color: Color(0x33000000),
+                  offset: Offset(0, -1),
+                  blurRadius: 1.0,
+                  spreadRadius: -1)
+            ],
           ),
           child: FloatingActionButton(
-            child: Icon(Icons.add, color: Colors.black),
+            child: Icon(Icons.add, color: Colors.white),
             heroTag: null,
             elevation: 0,
-            backgroundColor: Colors.yellow,
+            backgroundColor: Theme.of(context).primaryColor,
             highlightElevation: 0.0,
             onPressed: () {
               Get.toNamed(AppRoutes.AddAccount);
             },
             mini: false,
-            shape: new CircleBorder(),
+            shape: CircleBorder(),
             isExtended: false,
           ),
         ),

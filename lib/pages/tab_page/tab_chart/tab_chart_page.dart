@@ -1,3 +1,4 @@
+import 'package:billkeeping/pages/tab_page/tab_chart/widget/bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:billkeeping/pages/tab_page/tab_chart/widget/pie.dart';
@@ -24,7 +25,7 @@ class TabChartPage extends StatelessWidget {
             margin: EdgeInsets.only(bottom: 10, left: 60, right: 60),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
-              border: Border.all(width: 1, color: Colors.black),
+              border: Border.all(width: 1, color: Colors.white),
             ),
             child: Row(
               children: _list
@@ -37,9 +38,18 @@ class TabChartPage extends StatelessWidget {
           ),
         ),
       ),
-      body: Container(
-        child: Obx(() => PieChart.withData(_type.value)),
-        height: 200,
+      body: Column(
+        children: [
+          Container(
+            height: 175,
+            child: Obx(() => PieChart.withData(_type.value)),
+          ),
+          Container(
+            margin: EdgeInsets.all(20),
+            height: 175,
+            child: Obx(() => BarChart.withData(_type.value)),
+          ),
+        ],
       ),
     );
   }
@@ -56,8 +66,8 @@ class TabChartPage extends StatelessWidget {
               style: TextStyle(
                   color: _type.value == key
                       ? Theme.of(context).primaryColor
-                      : null)),
-          color: _type.value == key ? Colors.black : null,
+                      : Colors.white70)),
+          color: _type.value == key ? Colors.white : null,
         ),
       ),
     );

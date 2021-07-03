@@ -24,6 +24,10 @@ abstract class AbstractAccountMange extends GetxController {
     'incomeMoney': 0,
   };
 
+  List<Map<String, dynamic>> weekSumByProject = List.empty();
+  List<Map<String, dynamic>> mouthSumByProject = List.empty();
+  List<Map<String, dynamic>> yearSumByProject = List.empty();
+
   void refresh();
   void deleteAccount(int id);
   Future<int> addAccount(AccountInfoModel model);
@@ -32,6 +36,9 @@ abstract class AbstractAccountMange extends GetxController {
   Future<void> getMonthSum(String date);
   Future<void> getWeekSum(String data);
   Future<void> getYearSum(String date);
+  Future<void> getWeekSumByProject(String date);
+  Future<void> getMouthSumByProject(String date);
+  Future<void> getYearSumByProject(String date);
 
   Map<String, double> getPieData(String type) {
     switch (type) {
@@ -43,6 +50,19 @@ abstract class AbstractAccountMange extends GetxController {
         return this.yearSum;
       default:
         return this.monthSum;
+    }
+  }
+
+  List<Map<String, dynamic>> getBarData(String type) {
+    switch (type) {
+      case "week":
+        return this.weekSumByProject;
+      case "month":
+        return this.mouthSumByProject;
+      case "year":
+        return this.yearSumByProject;
+      default:
+        return this.mouthSumByProject;
     }
   }
 }

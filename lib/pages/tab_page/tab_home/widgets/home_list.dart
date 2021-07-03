@@ -5,7 +5,6 @@ import 'package:billkeeping/common/iconfont.dart';
 import 'package:billkeeping/data/models/account_info_model.dart';
 import 'package:billkeeping/data/models/sum_account_model.dart';
 import 'package:billkeeping/data/services/account_mange/account_mange_abstract.dart';
-import 'package:billkeeping/data/services/account_mange/account_mange_service.dart';
 
 class HomeList extends StatelessWidget {
   const HomeList({Key key, @required SlidableController slidableController})
@@ -18,35 +17,33 @@ class HomeList extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<AbstractAccountMange>(
       init: Get.find<AbstractAccountMange>(),
-      builder: (_) {
+      builder: (controller) {
         return AnimatedSwitcher(
           duration: Duration(milliseconds: 500),
           transitionBuilder: (Widget child, Animation<double> animation) =>
               SlideTransitionX(
             child: child,
-            direction: _.direction,
+            direction: controller.direction,
             position: animation,
           ),
-          child: _.sumAccountModelList.length > 0
-              // ? Text("Fuck")
-              ? ListView(
-                  key: ValueKey(_.curDate),
-                  padding: EdgeInsets.only(top: 0, bottom: 30),
-                  children: List.generate(
-                    _.sumAccountModelList.length,
-                    (index) => buildColumn(_.sumAccountModelList[index]),
-                  ),
-                )
-              : Container(
-                  height: 200,
-                  margin: EdgeInsets.only(bottom: 100),
-                  child: Icon(
-                    Icons.delete_forever,
-                    size: 200,
-                    color: Colors.black12,
-                  ),
+        child: controller.sumAccountModelList.length > 0
+            ? ListView(
+                // key: ValueKey(controller.curDate),
+                padding: EdgeInsets.only(top: 0, bottom: 30),
+                children: List.generate(
+                  controller.sumAccountModelList.length,
+                  (index) => buildColumn(controller.sumAccountModelList[index]),
                 ),
-        );
+              )
+            : Container(
+                height: 200,
+                margin: EdgeInsets.only(bottom: 100),
+                child: Icon(
+                  Icons.delete_forever,
+                  size: 200,
+                  color: Colors.black12,
+                ),
+              ));
       },
     );
   }

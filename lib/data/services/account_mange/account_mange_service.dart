@@ -32,7 +32,7 @@ class AccountMangeService extends AbstractAccountMange {
       this.direction = AxisDirection.up;
     }
     this.curDate = date;
-    // update();
+    update();
     return sumAccountModelList;
   }
 
@@ -55,15 +55,37 @@ class AccountMangeService extends AbstractAccountMange {
   }
 
   @override
+  Future<void> getWeekSumByProject(String date) async {
+    ChartDbProvider adp = ChartDbProvider();
+    weekSumByProject = await adp.getWeekSumByProject(date);
+  }
+
+  @override
+  Future<void> getMouthSumByProject(String date) async {
+    ChartDbProvider adp = ChartDbProvider();
+    mouthSumByProject = await adp.getMonthSumByProject(date);
+  }
+
+  @override
+  Future<void> getYearSumByProject(String date) async {
+    ChartDbProvider adp = ChartDbProvider();
+    yearSumByProject = await adp.getYearSumByProject(date);
+  }
+
+  @override
   void onReady() {
     super.onReady();
     this.curDate = DateTime.now().toString();
     getSumAccount(this.curDate.substring(0, 7));
     getWeekSum(this.curDate.substring(0, 10));
     getYearSum(this.curDate.substring(0, 4));
+
+    getWeekSumByProject(this.curDate.substring(0, 10));
+    getMouthSumByProject(this.curDate.substring(0, 7));
+    getYearSumByProject(this.curDate.substring(0, 4));
     print('ready');
   }
-  
+
   @override
   void refresh() {
     super.refresh();
@@ -71,5 +93,9 @@ class AccountMangeService extends AbstractAccountMange {
     getSumAccount(this.curDate.substring(0, 7));
     getWeekSum(this.curDate.substring(0, 10));
     getYearSum(this.curDate.substring(0, 4));
+
+    getWeekSumByProject(this.curDate.substring(0, 10));
+    getMouthSumByProject(this.curDate.substring(0, 7));
+    getYearSumByProject(this.curDate.substring(0, 4));
   }
 }

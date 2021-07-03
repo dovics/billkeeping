@@ -46,7 +46,8 @@ class AddAccountPage extends GetView<AbstractAccountMange> {
     }
     int res = await controller.addAccount(AccountInfoModel(date: date, projectID: id, money: money, type: type));
     if (res > 0) {
-      controller.refresh();
+      // controller.refresh();
+      controller.update();
       Get.back();
     } else {
       _showToast('新增失败');
@@ -113,14 +114,14 @@ class ProjectGridView extends GetView<AbstractProjectMange> {
         builder: (_) {
           return Wrap(
             spacing: 16,
-            children: _.projectMap[projectType].map((e) => buildItemIcon(_, e)).toList()..add(buildSettingIcon()),
+            children: _.projectMap[projectType].map((e) => buildItemIcon(context, _, e)).toList()..add(buildSettingIcon()),
           );
         },
       ),
     );
   }
 
-  Widget buildItemIcon(AbstractProjectMange _, ProjectModel project) {
+  Widget buildItemIcon(BuildContext context, AbstractProjectMange _, ProjectModel project) {
     return Obx(
       () => GestureDetector(
         onTap: () {
@@ -131,7 +132,8 @@ class ProjectGridView extends GetView<AbstractProjectMange> {
         },
         child: ProjectItem(
           item: project,
-          color: _index.value == project.id ? Colors.yellow[600] : Color(0xfff2f2f2),
+          color: _index.value == project.id ? Theme.of(context).highlightColor : Color(0xfff2f2f2),
+          iconColor: _index.value == project.id ? Colors.white : Colors.black,
         ),
       ),
     );
@@ -150,17 +152,17 @@ class ProjectGridView extends GetView<AbstractProjectMange> {
       child: ProjectItem(
         item: ProjectModel(name: '设置', icon: 'shezhi'),
         color: Color(0xfff2f2f2),
+        iconColor: Colors.black,
       ),
     );
   }
 }
 
-// 类别项
 class ProjectItem extends StatelessWidget {
-  const ProjectItem({Key key, @required this.item, @required this.color}) : super(key: key);
+  const ProjectItem({Key key, @required this.item, @required this.color, @required this.iconColor}) : super(key: key);
   final Color color;
   final ProjectModel item;
-
+  final Color iconColor;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -177,7 +179,7 @@ class ProjectItem extends StatelessWidget {
             child: Icon(
               IconFont.icon[item.icon],
               size: 28,
-              color: Colors.black,
+              color: iconColor,
             ),
           ),
           Container(

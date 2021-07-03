@@ -4,11 +4,11 @@ final ThemeData themeLight = ThemeData(
   colorScheme: ColorScheme.light(
     brightness: Brightness.light,
   ),
-  highlightColor: Color.fromRGBO(0, 0, 0, 0),
+  highlightColor: Color(0xFF527ff9),
   splashColor: Color.fromRGBO(0, 0, 0, 0),
-  primaryColor: Colors.yellow[600],
+  primaryColor: Color(0xFF3468F8),
   tabBarTheme: TabBarTheme(
-    labelColor: Colors.black,
+    labelColor: Colors.white,
     indicator: BoxDecoration(
       border: Border(
         bottom: BorderSide(

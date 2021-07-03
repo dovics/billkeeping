@@ -7,26 +7,41 @@ class TabMyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [
       ElevatedButton(
-          child: Text(DateTime.now().toString().substring(0, 10)),
-          onPressed: () {
-            getWeekSum(DateTime.now().toString().substring(0, 10)).then((value) => {
-              print(value)
-            });
-          })
+        child: Text(DateTime.now().toString().substring(0, 10)),
+        onPressed: () {
+          getYearSumByProject(DateTime.now().toString().substring(0, 4));
+        },
+      ),
+      ElevatedButton(
+        child: Text(DateTime.now().toString().substring(0, 10)),
+        onPressed: () {
+          getWeekSumByProject(DateTime.now().toString().substring(0, 10));
+        },
+      ),
     ]);
   }
 }
 
-Future<Map<String, double>> getWeekSum(String date) async {
+Future<List<Map<String, dynamic>>> getYearSumByProject(String date) async {
   Database db = await DbHelper.getDb();
   final List<Map<String, dynamic>> maps = await db.rawQuery('''
-      SELECT ifnull(SUM(a.payMoney), 0) payMoney,ifnull(SUM(a.incomeMoney), 0) incomeMoney
-      FROM account a
-      WHERE strftime('%Y-%m-%d', a.date) = '$date';
+      SELECT p.name, ifnull(SUM(a.payMoney), 0) payMoney
+      FROM account a LEFT JOIN project p ON p.id = a.projectID 
+      WHERE strftime('%Y', a.date) = '$date' 
+      AND a.type = 1
+      GROUP BY a.projectID;
     ''');
+  return maps;
+}
 
-  return {
-    'payMoney': (maps[0]['payMoney'] as num).toDouble(),
-    'incomeMoney': (maps[0]['incomeMoney'] as num).toDouble(),
-  };
+Future<List<Map<String, dynamic>>> getWeekSumByProject(String date) async {
+  Database db = await DbHelper.getDb();
+  final List<Map<String, dynamic>> maps = await db.rawQuery('''
+      SELECT p.name, ifnull(SUM(a.payMoney), 0) payMoney
+      FROM account a LEFT JOIN project p ON p.id = a.projectID 
+      WHERE strftime('%Y-%m-%d', a.date) = '$date' 
+      AND a.type = 1
+      GROUP BY a.projectID;
+    ''');
+  return maps;
 }

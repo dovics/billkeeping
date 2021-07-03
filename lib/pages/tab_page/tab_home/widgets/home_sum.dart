@@ -23,7 +23,8 @@ class HomeSum extends StatelessWidget {
               context,
               showTitleActions: true,
               locale: LocaleType.zh,
-              pickerModel: YearMonthPicker(locale: LocaleType.zh, currentTime: _dateTime.value),
+              pickerModel: YearMonthPicker(
+                  locale: LocaleType.zh, currentTime: _dateTime.value),
               onConfirm: (date) {
                 _dateTime.value = date;
                 ams.getSumAccount(date.toString().substring(0, 7));
@@ -37,12 +38,18 @@ class HomeSum extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('${_dateTime.value.year}年', style: TextStyle(color: Colors.black54)),
+                  Text('${_dateTime.value.year}年',
+                      style: TextStyle(color: Colors.white60)),
                   Text.rich(TextSpan(
                     children: [
-                      TextSpan(text: '${_dateTime.value.month < 10 ? '0' : ''}${_dateTime.value.month}', style: TextStyle(fontSize: 32)),
-                      TextSpan(text: '月'),
-                      TextSpan(text: ' ▼'),
+                      TextSpan(
+                          text:
+                              '${_dateTime.value.month < 10 ? '0' : ''}${_dateTime.value.month}',
+                          style: TextStyle(fontSize: 32, color: Colors.white)),
+                      TextSpan(
+                          text: '月', style: TextStyle(color: Colors.white)),
+                      TextSpan(
+                          text: ' ▼', style: TextStyle(color: Colors.white)),
                     ],
                   )),
                 ],
@@ -66,10 +73,14 @@ class HomeSum extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('收入', style: TextStyle(color: Colors.black54)),
+                      Text('收入', style: TextStyle(color: Colors.white60)),
                       Text(
                         '${_.monthSum['payMoney']}',
-                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.w300),
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.white,
+                        ),
                       ),
                     ],
                   ),
@@ -79,10 +90,14 @@ class HomeSum extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('支出', style: TextStyle(color: Colors.black54)),
+                      Text('支出', style: TextStyle(color: Colors.white60)),
                       Text(
                         '${_.monthSum['incomeMoney']}',
-                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.w300),
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.white,
+                        ),
                       ),
                     ],
                   ),

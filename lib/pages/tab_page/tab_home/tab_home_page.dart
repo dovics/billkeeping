@@ -72,7 +72,7 @@ class _TabHomePageState extends State<TabHomePage>
               right: 0,
               height: _titleHeight,
               child:
-                  Center(child: Text('账单明细', style: TextStyle(fontSize: 20))),
+                  Center(child: Text('账单明细', style: TextStyle(fontSize: 20, color: Colors.white))),
             ),
             Positioned(
               top: _titleHeight + topPadding,

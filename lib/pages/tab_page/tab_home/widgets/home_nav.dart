@@ -9,7 +9,7 @@ class HomeNav extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        boxShadow: [BoxShadow(color: Color(0xfff2f2f2), blurRadius: 5.0)],
+        boxShadow: [BoxShadow(color: Color(0xfff2f2f2), blurRadius: 0.1)],
         borderRadius: BorderRadius.circular(5),
       ),
       child: Row(

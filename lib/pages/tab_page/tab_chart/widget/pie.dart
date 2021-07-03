@@ -3,7 +3,6 @@ import 'package:billkeeping/data/services/account_mange/account_mange_service.da
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class PieChart extends StatelessWidget {
   final List<charts.Series> seriesList;
@@ -56,16 +55,16 @@ class PieChart extends StatelessWidget {
           }
         },
         measureFn: (LinearSales sales, _) => sales.amount,
-        colorFn: (LinearSales sales, _) {
-          switch (sales.type) {
-            case "收入":
-              return charts.Color(r: 193, g: 255, b: 193);
-            case "支出":
-              return charts.Color(r: 255, g: 99, b: 71);
-            default:
-              return charts.Color.black;
-          }
-        },
+        // colorFn: (LinearSales sales, _) {
+        //   switch (sales.type) {
+        //     case "收入":
+        //       return charts.Color(r: 193, g: 255, b: 193);
+        //     case "支出":
+        //       return charts.Color(r: 255, g: 99, b: 71);
+        //     default:
+        //       return charts.Color.black;
+        //   }
+        // },
         data: data,
         // Set a label accessor to control the text of the arc label.
         labelAccessorFn: (LinearSales row, _) => '${row.type}: ${row.amount}',
