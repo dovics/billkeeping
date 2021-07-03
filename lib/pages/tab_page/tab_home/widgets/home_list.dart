@@ -16,18 +16,19 @@ class HomeList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AccountMangeService accountMangeService = Get.find<AbstractAccountMange>();
     return GetBuilder<AbstractAccountMange>(
-      init: accountMangeService,
+      init: Get.find<AbstractAccountMange>(),
       builder: (_) {
         return AnimatedSwitcher(
           duration: Duration(milliseconds: 500),
-          transitionBuilder: (Widget child, Animation<double> animation) => SlideTransitionX(
+          transitionBuilder: (Widget child, Animation<double> animation) =>
+              SlideTransitionX(
             child: child,
             direction: _.direction,
             position: animation,
           ),
           child: _.sumAccountModelList.length > 0
+              // ? Text("Fuck")
               ? ListView(
                   key: ValueKey(_.curDate),
                   padding: EdgeInsets.only(top: 0, bottom: 30),
@@ -62,9 +63,11 @@ class HomeList extends StatelessWidget {
               SizedBox(width: 10),
               Text(model.weekdayStr, style: TextStyle(color: Colors.black54)),
               Expanded(child: Container()),
-              Text('支出：${model.payMoney}', style: TextStyle(color: Colors.black54)),
+              Text('支出：${model.payMoney}',
+                  style: TextStyle(color: Colors.black54)),
               SizedBox(width: 10),
-              Text('收入：${model.incomeMoney}', style: TextStyle(color: Colors.black54)),
+              Text('收入：${model.incomeMoney}',
+                  style: TextStyle(color: Colors.black54)),
             ],
           ),
         ),
@@ -82,7 +85,8 @@ class HomeList extends StatelessWidget {
               controller: _slidableController,
               child: ListTile(
                 onTap: () => _slidableController.activeState?.close(),
-                contentPadding: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 4, horizontal: 16),
                 leading: Container(
                   padding: EdgeInsets.all(8),
                   decoration: BoxDecoration(
@@ -102,7 +106,6 @@ class HomeList extends StatelessWidget {
                     color: Colors.red,
                     closeOnTap: false,
                     onTap: () {
-                      print(1);
                       _slidableController.activeState?.close();
                     },
                   ),
@@ -110,7 +113,8 @@ class HomeList extends StatelessWidget {
               ],
             );
           },
-          separatorBuilder: (context, index) => Divider(height: 0, thickness: .5, color: Color(0xFFeeeeee)),
+          separatorBuilder: (context, index) =>
+              Divider(height: 0, thickness: .5, color: Color(0xFFeeeeee)),
         ),
       ],
     );
@@ -158,7 +162,7 @@ class SlideTransitionX extends AnimatedWidget {
   @override
   Widget build(BuildContext context) {
     Offset offset = _tween.evaluate(position);
-    print(offset.dx);
+    print("offset.dx $offset");
     if (position.status == AnimationStatus.reverse) {
       switch (direction) {
         case AxisDirection.up:

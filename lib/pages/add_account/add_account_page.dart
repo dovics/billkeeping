@@ -46,6 +46,7 @@ class AddAccountPage extends GetView<AbstractAccountMange> {
     }
     int res = await controller.addAccount(AccountInfoModel(date: date, projectID: id, money: money, type: type));
     if (res > 0) {
+      controller.refresh();
       Get.back();
     } else {
       _showToast('新增失败');

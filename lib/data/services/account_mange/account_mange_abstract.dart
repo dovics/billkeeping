@@ -14,8 +14,35 @@ abstract class AbstractAccountMange extends GetxController {
     'incomeMoney': 0,
   };
 
+  Map<String, double> weekSum = {
+    'payMoney': 0,
+    'incomeMoney': 0,
+  };
+
+  Map<String, double> yearSum = {
+    'payMoney': 0,
+    'incomeMoney': 0,
+  };
+
+  void refresh();
   void deleteAccount(int id);
   Future<int> addAccount(AccountInfoModel model);
   Future<List<SumAccountModel>> getSumAccount(String date);
+
   Future<void> getMonthSum(String date);
+  Future<void> getWeekSum(String data);
+  Future<void> getYearSum(String date);
+
+  Map<String, double> getPieData(String type) {
+    switch (type) {
+      case "week":
+        return this.weekSum;
+      case "month":
+        return this.monthSum;
+      case "year":
+        return this.yearSum;
+      default:
+        return this.monthSum;
+    }
+  }
 }

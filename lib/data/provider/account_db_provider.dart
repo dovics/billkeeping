@@ -16,11 +16,17 @@ class AccountDbProvider {
   }
 
   /// 插入账目
-  Future<int> insertAccount({@required int projectID, @required double money, @required String date, int type = 1, String remark = ''}) async {
+  Future<int> insertAccount(
+      {@required int projectID,
+      @required double money,
+      @required String date,
+      int type = 1,
+      String remark = ''}) async {
     Database db = await DbHelper.getDb();
     double payMoney = type == 1 ? money : 0;
     double incomeMoney = type == 1 ? 0 : money;
-    return db.rawInsert('''INSERT INTO account (projectID,payMoney,incomeMoney,type,date,remark) VALUES($projectID,$payMoney,$incomeMoney,$type,'$date','$remark')''');
+    return db.rawInsert(
+        '''INSERT INTO account (projectID,payMoney,incomeMoney,type,date,remark) VALUES($projectID,$payMoney,$incomeMoney,$type,'$date','$remark')''');
   }
 
   /// 获取每日列表数据
@@ -75,6 +81,33 @@ class AccountDbProvider {
       SELECT ifnull(SUM(a.payMoney), 0) payMoney,ifnull(SUM(a.incomeMoney), 0) incomeMoney
       FROM account a
       WHERE strftime('%Y-%m', a.date) = '$date';
+    ''');
+    return {
+      'payMoney': (maps[0]['payMoney'] as num).toDouble(),
+      'incomeMoney': (maps[0]['incomeMoney'] as num).toDouble(),
+    };
+  }
+
+  Future<Map<String, double>> getWeekSum(String date) async {
+    Database db = await DbHelper.getDb();
+    final List<Map<String, dynamic>> maps = await db.rawQuery('''
+      SELECT ifnull(SUM(a.payMoney), 0) payMoney,ifnull(SUM(a.incomeMoney), 0) incomeMoney
+      FROM account a
+      WHERE strftime('%Y-%m-%d', a.date) = '$date';
+    ''');
+
+    return {
+      'payMoney': (maps[0]['payMoney'] as num).toDouble(),
+      'incomeMoney': (maps[0]['incomeMoney'] as num).toDouble(),
+    };
+  }
+
+  Future<Map<String, double>> getYearSum(String date) async {
+    Database db = await DbHelper.getDb();
+    final List<Map<String, dynamic>> maps = await db.rawQuery('''
+      SELECT ifnull(SUM(a.payMoney), 0) payMoney,ifnull(SUM(a.incomeMoney), 0) incomeMoney
+      FROM account a
+      WHERE strftime('%Y', a.date) = '$date';
     ''');
     return {
       'payMoney': (maps[0]['payMoney'] as num).toDouble(),

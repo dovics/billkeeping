@@ -13,7 +13,7 @@ class DbHelper {
       _db = await openDatabase(
         join(await getDatabasesPath(), _dbName),
         onCreate: (db, version) async {
-          print(db);
+          print("getDB $db");
           debugPrint('create');
           await _initTable(db);
           await _initData(db);

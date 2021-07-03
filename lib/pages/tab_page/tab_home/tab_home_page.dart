@@ -14,7 +14,8 @@ class TabHomePage extends StatefulWidget {
   _TabHomePageState createState() => _TabHomePageState();
 }
 
-class _TabHomePageState extends State<TabHomePage> with AutomaticKeepAliveClientMixin {
+class _TabHomePageState extends State<TabHomePage>
+    with AutomaticKeepAliveClientMixin {
   final double _bgHeight = 170;
   final double _titleHeight = 50;
   final double _sumHeight = 80;
@@ -42,7 +43,6 @@ class _TabHomePageState extends State<TabHomePage> with AutomaticKeepAliveClient
   Widget build(BuildContext context) {
     super.build(context);
     final double topPadding = MediaQuery.of(context).padding.top;
-
     return AnnotatedRegion(
       value: SystemUiOverlayStyle.dark,
       child: SizedBox(
@@ -62,14 +62,17 @@ class _TabHomePageState extends State<TabHomePage> with AutomaticKeepAliveClient
               left: 0,
               right: 0,
               height: _bgHeight + topPadding,
-              child: Container(height: _bgHeight + topPadding, color: Theme.of(context).primaryColor),
+              child: Container(
+                  height: _bgHeight + topPadding,
+                  color: Theme.of(context).primaryColor),
             ),
             Positioned(
               top: topPadding,
               left: 0,
               right: 0,
               height: _titleHeight,
-              child: Center(child: Text('哈哈记账', style: TextStyle(fontSize: 20))),
+              child:
+                  Center(child: Text('账单明细', style: TextStyle(fontSize: 20))),
             ),
             Positioned(
               top: _titleHeight + topPadding,

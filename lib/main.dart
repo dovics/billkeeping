@@ -14,7 +14,7 @@ void main() {
 
   runApp(
     GetMaterialApp(
-      title: '哈哈',
+      title: 'billkeeping',
       theme: themeLight,
       initialRoute: '/',
       defaultTransition: Transition.fade,

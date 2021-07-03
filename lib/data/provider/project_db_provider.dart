@@ -35,7 +35,6 @@ class ProjectDbProvider {
   // 获取分类列表
   Future<List<ProjectModel>> projects({String where = '1=1'}) async {
     final Database db = await DbHelper.getDb();
-    print(db);
     final List<Map<String, dynamic>> maps = await db.rawQuery('''select id,name,type,icon,sort,isDefault,deleted,updateTime from project where $where''');
     return List.generate(maps.length, (i) {
       return ProjectModel(
