@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:shici/common/iconfont.dart';
-import 'package:shici/data/models/account_info_model.dart';
-import 'package:shici/data/models/project_model.dart';
-import 'package:shici/data/services/account_mange/account_mange_abstract.dart';
-import 'package:shici/data/services/project_mange/project_mange_abstract.dart';
-import 'package:shici/routes/routes.dart';
-import 'package:shici/widgets/calculator.dart';
+import 'package:billkeeping/common/iconfont.dart';
+import 'package:billkeeping/data/models/account_info_model.dart';
+import 'package:billkeeping/data/models/project_model.dart';
+import 'package:billkeeping/data/services/account_mange/account_mange_abstract.dart';
+import 'package:billkeeping/data/services/project_mange/project_mange_abstract.dart';
+import 'package:billkeeping/routes/routes.dart';
+import 'package:billkeeping/widgets/calculator.dart';
 
 class TypeModel {
   String key;

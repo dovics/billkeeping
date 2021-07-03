@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
-import 'package:shici/pages/add_account/add_account_binding.dart';
-import 'package:shici/pages/project_mange/add_project_page.dart';
-import 'package:shici/pages/project_mange/set_project_page.dart';
-import 'package:shici/pages/project_mange/project_mange_binding.dart';
-import 'package:shici/pages/add_account/add_account_page.dart';
-import 'package:shici/pages/tab_page/index.dart';
+import 'package:billkeeping/pages/add_account/add_account_binding.dart';
+import 'package:billkeeping/pages/project_mange/add_project_page.dart';
+import 'package:billkeeping/pages/project_mange/set_project_page.dart';
+import 'package:billkeeping/pages/project_mange/project_mange_binding.dart';
+import 'package:billkeeping/pages/add_account/add_account_page.dart';
+import 'package:billkeeping/pages/tab_page/index.dart';
 
 abstract class AppRoutes {
   static const Initial = '/';

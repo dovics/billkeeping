@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
-import 'package:shici/common/iconfont.dart';
-import 'package:shici/data/models/account_info_model.dart';
-import 'package:shici/data/models/sum_account_model.dart';
-import 'package:shici/data/services/account_mange/account_mange_abstract.dart';
-import 'package:shici/data/services/account_mange/account_mange_service.dart';
+import 'package:billkeeping/common/iconfont.dart';
+import 'package:billkeeping/data/models/account_info_model.dart';
+import 'package:billkeeping/data/models/sum_account_model.dart';
+import 'package:billkeeping/data/services/account_mange/account_mange_abstract.dart';
+import 'package:billkeeping/data/services/account_mange/account_mange_service.dart';
 
 class HomeList extends StatelessWidget {
   const HomeList({Key key, @required SlidableController slidableController})

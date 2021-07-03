@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shici/common/db_helper.dart';
-import 'package:shici/data/models/account_info_model.dart';
-import 'package:shici/data/models/sum_account_model.dart';
+import 'package:billkeeping/common/db_helper.dart';
+import 'package:billkeeping/data/models/account_info_model.dart';
+import 'package:billkeeping/data/models/sum_account_model.dart';
 import 'package:sqflite/sqlite_api.dart';
 
 class AccountDbProvider {

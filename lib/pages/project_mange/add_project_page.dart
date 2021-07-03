@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:shici/common/iconfont.dart';
-import 'package:shici/data/services/project_mange/project_mange_abstract.dart';
+import 'package:billkeeping/common/iconfont.dart';
+import 'package:billkeeping/data/services/project_mange/project_mange_abstract.dart';
 
 // ignore: must_be_immutable
 class AddProjectPage extends GetView<AbstractProjectMange> {

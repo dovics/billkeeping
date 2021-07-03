@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
-import 'package:shici/data/services/account_mange/account_mange_abstract.dart';
-import 'package:shici/data/services/account_mange/account_mange_service.dart';
-import 'package:shici/pages/tab_page/tab_home/widgets/home_list.dart';
-import 'package:shici/pages/tab_page/tab_home/widgets/home_sum.dart';
+import 'package:billkeeping/data/services/account_mange/account_mange_abstract.dart';
+import 'package:billkeeping/data/services/account_mange/account_mange_service.dart';
+import 'package:billkeeping/pages/tab_page/tab_home/widgets/home_list.dart';
+import 'package:billkeeping/pages/tab_page/tab_home/widgets/home_sum.dart';
 
 import 'widgets/home_nav.dart';
 

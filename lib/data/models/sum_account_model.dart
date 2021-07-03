@@ -1,4 +1,4 @@
-import 'package:shici/data/models/account_info_model.dart';
+import 'package:billkeeping/data/models/account_info_model.dart';
 
 class SumAccountModel {
   /// 支出金额

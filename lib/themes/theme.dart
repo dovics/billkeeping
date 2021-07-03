@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shici/themes/dark.dart';
-import 'package:shici/themes/light.dart';
+import 'package:billkeeping/themes/dark.dart';
+import 'package:billkeeping/themes/light.dart';
 
 class ThemeDataInfo {
   static ThemeDataInfo _themeDataInfo;

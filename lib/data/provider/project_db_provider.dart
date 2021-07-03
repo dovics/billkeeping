@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:shici/common/db_helper.dart';
-import 'package:shici/data/models/project_model.dart';
+import 'package:billkeeping/common/db_helper.dart';
+import 'package:billkeeping/data/models/project_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class ProjectDbProvider {

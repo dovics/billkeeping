@@ -1,4 +1,4 @@
-package com.example.shici
+package com.example.billkeeping
 
 import io.flutter.embedding.android.FlutterActivity
 

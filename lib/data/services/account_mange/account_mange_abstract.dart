@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shici/data/models/account_info_model.dart';
-import 'package:shici/data/models/sum_account_model.dart';
+import 'package:billkeeping/data/models/account_info_model.dart';
+import 'package:billkeeping/data/models/sum_account_model.dart';
 
 abstract class AbstractAccountMange extends GetxController {
   // 当前时间

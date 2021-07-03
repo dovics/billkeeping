@@ -1,10 +1,10 @@
 import 'package:drag_and_drop_lists/drag_and_drop_lists.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shici/common/iconfont.dart';
-import 'package:shici/data/models/project_model.dart';
-import 'package:shici/data/services/project_mange/project_mange_abstract.dart';
-import 'package:shici/routes/routes.dart';
+import 'package:billkeeping/common/iconfont.dart';
+import 'package:billkeeping/data/models/project_model.dart';
+import 'package:billkeeping/data/services/project_mange/project_mange_abstract.dart';
+import 'package:billkeeping/routes/routes.dart';
 
 class SetProjectPage extends StatelessWidget {
   final _type = 'pay'.obs;

@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:shici/common/db_helper.dart';
+import 'package:billkeeping/common/db_helper.dart';
 import 'package:sqflite/sqflite.dart';
 
 abstract class BaseDbProvider {

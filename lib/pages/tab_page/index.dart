@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shici/pages/tab_page/tab_chart/tab_chart_page.dart';
-import 'package:shici/pages/tab_page/tab_home/tab_home_page.dart';
-import 'package:shici/pages/tab_page/tab_my_page.dart';
-import 'package:shici/routes/routes.dart';
+import 'package:billkeeping/pages/tab_page/tab_chart/tab_chart_page.dart';
+import 'package:billkeeping/pages/tab_page/tab_home/tab_home_page.dart';
+import 'package:billkeeping/pages/tab_page/tab_my_page.dart';
+import 'package:billkeeping/routes/routes.dart';
 
 class HomaPage extends StatefulWidget {
   @override

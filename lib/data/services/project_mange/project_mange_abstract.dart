@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:shici/data/models/project_model.dart';
+import 'package:billkeeping/data/models/project_model.dart';
 
 abstract class AbstractProjectMange extends GetxController {
   Map<String, List<ProjectModel>> projectMap = {
