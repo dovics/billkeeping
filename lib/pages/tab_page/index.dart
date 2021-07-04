@@ -55,12 +55,26 @@ class _HomaPageState extends State<HomaPage> {
         selectedItemColor: Theme.of(context).primaryColor,
         type: BottomNavigationBarType.fixed,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: '明细'),
-          BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: '图表'),
-          BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: '记一笔'),
-          BottomNavigationBarItem(icon: Icon(Icons.business), label: '社区'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle), label: '我的'),
+            icon: Icon(Icons.home),
+            label: '明细',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bar_chart),
+            label: '图表',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bar_chart),
+            label: '记一笔',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: '社区',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: '我的',
+          ),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

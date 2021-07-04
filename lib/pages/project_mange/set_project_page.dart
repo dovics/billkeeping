@@ -19,16 +19,16 @@ class SetProjectPage extends StatelessWidget {
     final bottom = MediaQuery.of(context).padding.bottom;
     return Scaffold(
       appBar: AppBar(
-        title: Text('类别设置'),
+        title: Text('类别设置', style: TextStyle(color: Colors.white)),
         elevation: 0.0,
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(36),
           child: Container(
             height: 36,
-            margin: EdgeInsets.only(bottom: 10, left: 60, right: 60),
+            margin: EdgeInsets.only(top: 10, bottom: 10, left: 60, right: 60),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
-              border: Border.all(width: 1, color: Colors.black),
+              border: Border.all(width: 1, color: Colors.white),
             ),
             child: Row(
               children: [
@@ -39,8 +39,8 @@ class SetProjectPage extends StatelessWidget {
                     child: Obx(
                       () => Container(
                         alignment: Alignment.center,
-                        child: Text('支出', style: TextStyle(color: _type.value == 'pay' ? Theme.of(context).primaryColor : null)),
-                        color: _type.value == 'pay' ? Colors.black : null,
+                        child: Text('支出', style: TextStyle(color: _type.value == 'pay' ? Theme.of(context).primaryColor : Colors.white)),
+                        color: _type.value == 'pay' ? Colors.white : null,
                       ),
                     ),
                   ),
@@ -52,8 +52,8 @@ class SetProjectPage extends StatelessWidget {
                     child: Obx(
                       () => Container(
                         alignment: Alignment.center,
-                        child: Text('收入', style: TextStyle(color: _type.value == 'income' ? Theme.of(context).primaryColor : null)),
-                        color: _type.value == 'income' ? Colors.black : null,
+                        child: Text('收入', style: TextStyle(color: _type.value == 'income' ? Theme.of(context).primaryColor : Colors.white)),
+                        color: _type.value == 'income' ? Colors.white : null,
                       ),
                     ),
                   ),

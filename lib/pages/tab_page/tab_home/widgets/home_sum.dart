@@ -75,7 +75,7 @@ class HomeSum extends StatelessWidget {
                     children: [
                       Text('收入', style: TextStyle(color: Colors.white60)),
                       Text(
-                        '${_.monthSum['payMoney']}',
+                        '${_.monthSum['incomeMoney']}',
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w300,
@@ -92,7 +92,7 @@ class HomeSum extends StatelessWidget {
                     children: [
                       Text('支出', style: TextStyle(color: Colors.white60)),
                       Text(
-                        '${_.monthSum['incomeMoney']}',
+                        '${_.monthSum['payMoney']}',
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w300,

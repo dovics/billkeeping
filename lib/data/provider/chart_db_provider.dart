@@ -93,4 +93,15 @@ class ChartDbProvider {
 
     return maps;
   }
+
+  Future<List<Map<String, dynamic>>> getWeekDailySum(String date) async {
+    Database db = await DbHelper.getDb();
+    final List<Map<String, dynamic>> maps = await db.rawQuery('''
+      SELECT strftime('%w', a.date) weekday, ifnull(SUM(a.payMoney), 0) payMoney FROM account a 
+      WHERE a.date >= date('now', 'localtime', 'weekday 1', '-7 day', 'start of day')
+      GROUP BY weekday;
+    ''');
+
+    return maps;
+  }
 }

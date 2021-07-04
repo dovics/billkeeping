@@ -5,6 +5,7 @@ import 'package:billkeeping/common/iconfont.dart';
 import 'package:billkeeping/data/models/account_info_model.dart';
 import 'package:billkeeping/data/models/sum_account_model.dart';
 import 'package:billkeeping/data/services/account_mange/account_mange_abstract.dart';
+import 'package:billkeeping/pages/tab_page/tab_home/widgets/week.dart';
 
 class HomeList extends StatelessWidget {
   const HomeList({Key key, @required SlidableController slidableController})
@@ -18,23 +19,30 @@ class HomeList extends StatelessWidget {
     return GetBuilder<AbstractAccountMange>(
       init: Get.find<AbstractAccountMange>(),
       builder: (controller) {
-        return AnimatedSwitcher(
-          duration: Duration(milliseconds: 500),
-          transitionBuilder: (Widget child, Animation<double> animation) =>
-              SlideTransitionX(
-            child: child,
-            direction: controller.direction,
-            position: animation,
-          ),
-        child: controller.sumAccountModelList.length > 0
+        // return AnimatedSwitcher(
+        //   duration: Duration(milliseconds: 500),
+        //   transitionBuilder: (Widget child, Animation<double> animation) =>
+        //       SlideTransitionX(
+        //     child: child,
+        //     direction: controller.direction,
+        //     position: animation,
+        //   ),
+        // child:
+        return controller.sumAccountModelList.length > 0
             ? ListView(
                 // key: ValueKey(controller.curDate),
                 padding: EdgeInsets.only(top: 0, bottom: 30),
-                children: List.generate(
-                  controller.sumAccountModelList.length,
-                  (index) => buildColumn(controller.sumAccountModelList[index]),
-                ),
-              )
+                children: [
+                    Container(
+                      margin: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                      child: BarChartSample1(),
+                    ),
+                    ...List.generate(
+                      controller.sumAccountModelList.length,
+                      (index) =>
+                          buildColumn(controller.sumAccountModelList[index]),
+                    ),
+                  ])
             : Container(
                 height: 200,
                 margin: EdgeInsets.only(bottom: 100),
@@ -43,7 +51,7 @@ class HomeList extends StatelessWidget {
                   size: 200,
                   color: Colors.black12,
                 ),
-              ));
+              );
       },
     );
   }

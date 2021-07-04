@@ -31,7 +31,8 @@ class AddProjectPage extends GetView<AbstractProjectMange> {
         title: Obx(() => Text('添加${_type.value == 'pay' ? '支出' : '收入'}类别')),
         actions: [
           IconButton(
-            icon: Text('完成', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+            icon: Text('完成',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
             onPressed: () {
               if (name.trim() != '') {
                 controller.addProject(name, _iconStr.value, _type.value);
@@ -67,8 +68,11 @@ class AddProjectPage extends GetView<AbstractProjectMange> {
                       height: 60,
                       width: 60,
                       padding: EdgeInsets.all(12),
-                      decoration: BoxDecoration(color: Colors.yellow[600], borderRadius: BorderRadius.circular(100)),
-                      child: Icon(IconFont.icon[_iconStr.value], size: 32),
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          borderRadius: BorderRadius.circular(100)),
+                      child: Icon(IconFont.icon[_iconStr.value],
+                          color: Colors.white, size: 32),
                     ),
                   ),
                   Expanded(
@@ -93,14 +97,14 @@ class AddProjectPage extends GetView<AbstractProjectMange> {
               ),
             ),
             Divider(height: 1),
-            Expanded(child: buildIconItem()),
+            Expanded(child: buildIconItem(context)),
           ],
         ),
       ),
     );
   }
 
-  Widget buildIconItem() {
+  Widget buildIconItem(BuildContext context) {
     return ListView(
       children: [
         Container(
@@ -110,20 +114,28 @@ class AddProjectPage extends GetView<AbstractProjectMange> {
             spacing: 16.0, // 主轴(水平)方向间距
             runSpacing: 24.0, // 纵轴（垂直）方向间距
             children: IconFont.icon.keys
-                .map((iconStr) => GestureDetector(
-                      onTap: () => _iconStr.value = iconStr,
-                      child: Obx(
-                        () => Container(
-                          width: 64,
-                          height: 64,
-                          decoration: BoxDecoration(
-                            color: iconStr == _iconStr.value ? Colors.yellow[600] : Color(0xfff2f2f2),
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: Icon(IconFont.icon[iconStr], size: 32),
+                .map(
+                  (iconStr) => GestureDetector(
+                    onTap: () => _iconStr.value = iconStr,
+                    child: Obx(
+                      () => Container(
+                        width: 64,
+                        height: 64,
+                        decoration: BoxDecoration(
+                          color: iconStr == _iconStr.value
+                              ? Theme.of(context).primaryColor
+                              : Color(0xfff2f2f2),
+                          borderRadius: BorderRadius.circular(100),
                         ),
+                        child: Icon(IconFont.icon[iconStr],
+                            size: 32,
+                            color: iconStr == _iconStr.value
+                                ? Colors.white
+                                : Colors.black),
                       ),
-                    ))
+                    ),
+                  ),
+                )
                 .toList(),
           ),
         ),

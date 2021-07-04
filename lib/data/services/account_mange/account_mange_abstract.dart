@@ -27,6 +27,7 @@ abstract class AbstractAccountMange extends GetxController {
   List<Map<String, dynamic>> weekSumByProject = List.empty();
   List<Map<String, dynamic>> mouthSumByProject = List.empty();
   List<Map<String, dynamic>> yearSumByProject = List.empty();
+  List<double> weekDailySum = List.filled(7, 0);
 
   void refresh();
   void deleteAccount(int id);
@@ -39,7 +40,8 @@ abstract class AbstractAccountMange extends GetxController {
   Future<void> getWeekSumByProject(String date);
   Future<void> getMouthSumByProject(String date);
   Future<void> getYearSumByProject(String date);
-
+  Future<void> getWeekDailySum(String date);
+  
   Map<String, double> getPieData(String type) {
     switch (type) {
       case "week":

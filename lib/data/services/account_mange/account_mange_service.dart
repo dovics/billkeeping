@@ -73,6 +73,16 @@ class AccountMangeService extends AbstractAccountMange {
   }
 
   @override
+  Future<void> getWeekDailySum(String date)async {
+    ChartDbProvider adp = ChartDbProvider();
+    var maps = await adp.getWeekDailySum(date);
+    print(maps);
+    for (var value in maps) {
+      weekDailySum[int.parse(value['weekday'])] = value['payMoney'].toDouble();
+    }
+  }
+  
+  @override
   void onReady() {
     super.onReady();
     this.curDate = DateTime.now().toString();
@@ -83,6 +93,8 @@ class AccountMangeService extends AbstractAccountMange {
     getWeekSumByProject(this.curDate.substring(0, 10));
     getMouthSumByProject(this.curDate.substring(0, 7));
     getYearSumByProject(this.curDate.substring(0, 4));
+
+    getWeekDailySum(this.curDate);
     print('ready');
   }
 

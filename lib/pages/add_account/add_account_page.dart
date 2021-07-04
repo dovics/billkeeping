@@ -132,7 +132,7 @@ class ProjectGridView extends GetView<AbstractProjectMange> {
         },
         child: ProjectItem(
           item: project,
-          color: _index.value == project.id ? Theme.of(context).highlightColor : Color(0xfff2f2f2),
+          color: _index.value == project.id ? Theme.of(context).primaryColor : Color(0xfff2f2f2),
           iconColor: _index.value == project.id ? Colors.white : Colors.black,
         ),
       ),

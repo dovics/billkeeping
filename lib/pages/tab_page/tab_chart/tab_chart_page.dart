@@ -14,44 +14,67 @@ class TabChartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('统计信息'),
-        centerTitle: true,
-        elevation: 0.0,
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(36),
-          child: Container(
-            height: 36,
-            margin: EdgeInsets.only(bottom: 10, left: 60, right: 60),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(6),
-              border: Border.all(width: 1, color: Colors.white),
-            ),
-            child: Row(
-              children: _list
-                  .map((e) => Expanded(
-                        child:
-                            buildGestureDetector(context, e['title'], e['key']),
-                      ))
-                  .toList(),
+        appBar: AppBar(
+          title: Text('统计信息'),
+          centerTitle: true,
+          elevation: 0.0,
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(36),
+            child: Container(
+              height: 36,
+              margin: EdgeInsets.only(bottom: 10, left: 60, right: 60),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(6),
+                border: Border.all(width: 1, color: Colors.white),
+              ),
+              child: Row(
+                children: _list
+                    .map((e) => Expanded(
+                          child: buildGestureDetector(
+                              context, e['title'], e['key']),
+                        ))
+                    .toList(),
+              ),
             ),
           ),
         ),
-      ),
-      body: Column(
-        children: [
-          Container(
-            height: 175,
-            child: Obx(() => PieChart.withData(_type.value)),
+        body: Container(
+          color: Color(0xF4F4F4),
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.fromLTRB(20, 20, 20, 10),
+                padding: EdgeInsets.all(10),
+                height: 175,
+                child: Obx(() => PieChart.withData(_type.value)),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Color(0xffE2E2E2),
+                          offset: Offset(2.0, 2.0),
+                          blurRadius: 10.0)
+                    ]),
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                height: 250,
+                child: Obx(() => BarChart.withData(_type.value)),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Color(0xffE2E2E2),
+                          offset: Offset(2.0, 2.0),
+                          blurRadius: 10.0)
+                    ]),
+              ),
+            ],
           ),
-          Container(
-            margin: EdgeInsets.all(20),
-            height: 175,
-            child: Obx(() => BarChart.withData(_type.value)),
-          ),
-        ],
-      ),
-    );
+        ));
   }
 
   GestureDetector buildGestureDetector(

@@ -6,7 +6,7 @@ final ThemeData themeLight = ThemeData(
   ),
   highlightColor: Color(0xFF527ff9),
   splashColor: Color.fromRGBO(0, 0, 0, 0),
-  primaryColor: Color(0xFF3468F8),
+  primaryColor: Color(0xff00BCD5),
   tabBarTheme: TabBarTheme(
     labelColor: Colors.white,
     indicator: BoxDecoration(
