@@ -73,15 +73,16 @@ class AccountMangeService extends AbstractAccountMange {
   }
 
   @override
-  Future<void> getWeekDailySum(String date)async {
+  Future<void> getWeekDailySum(String date) async {
     ChartDbProvider adp = ChartDbProvider();
     var maps = await adp.getWeekDailySum(date);
     print(maps);
     for (var value in maps) {
       weekDailySum[int.parse(value['weekday'])] = value['payMoney'].toDouble();
     }
+    update();
   }
-  
+
   @override
   void onReady() {
     super.onReady();
