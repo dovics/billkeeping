@@ -23,7 +23,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
   get: ^4.1.4
   flutter_datetime_picker: ^1.5.1
   fluttertoast: ^8.0.7

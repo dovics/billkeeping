@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:billkeeping/common/iconfont.dart';
 import 'package:billkeeping/data/models/account_info_model.dart';
 import 'package:billkeeping/data/models/sum_account_model.dart';
-import 'package:billkeeping/data/services/account_mange/account_mange_abstract.dart';
+import 'package:billkeeping/data/services/account_manage/account_manage_abstract.dart';
 import 'package:billkeeping/pages/tab_page/tab_home/widgets/week.dart';
 
 class HomeList extends StatelessWidget {
@@ -16,8 +16,8 @@ class HomeList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<AbstractAccountMange>(
-      init: Get.find<AbstractAccountMange>(),
+    return GetBuilder<AbstractAccountManage>(
+      init: Get.find<AbstractAccountManage>(),
       builder: (controller) {
         // return AnimatedSwitcher(
         //   duration: Duration(milliseconds: 500),

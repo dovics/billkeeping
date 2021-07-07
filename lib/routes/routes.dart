@@ -5,6 +5,8 @@ import 'package:billkeeping/pages/project_mange/set_project_page.dart';
 import 'package:billkeeping/pages/project_mange/project_mange_binding.dart';
 import 'package:billkeeping/pages/add_account/add_account_page.dart';
 import 'package:billkeeping/pages/tab_page/index.dart';
+import 'package:billkeeping/pages/all_accounts/all_accounts.dart';
+import 'package:billkeeping/pages/all_accounts/all_accounts_binding.dart';
 
 abstract class AppRoutes {
   static const Initial = '/';
@@ -12,7 +14,8 @@ abstract class AppRoutes {
   static const AddAccount = '/AddAccount';
   static const SetProject = '/SetProject';
   static const AddProject = '/AddProject';
-
+  static const AllAccounts = '/AllAccounts';
+  
   static final pages = [
     GetPage(
       name: AppRoutes.Initial,
@@ -25,13 +28,18 @@ abstract class AppRoutes {
     ),
     GetPage(
       name: AppRoutes.SetProject,
-      binding: ProjectMangeBinding(),
+      binding: ProjectManageBinding(),
       page: () => SetProjectPage(),
     ),
     GetPage(
       name: AppRoutes.AddProject,
-      binding: ProjectMangeBinding(),
+      binding: ProjectManageBinding(),
       page: () => AddProjectPage(),
     ),
+    GetPage(
+      name: AppRoutes.AllAccounts,
+      binding: AllAccountsBinding(),
+      page: () => AllAccountsPage(),
+    )
   ];
 }

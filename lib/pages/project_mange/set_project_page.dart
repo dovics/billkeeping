@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:billkeeping/common/iconfont.dart';
 import 'package:billkeeping/data/models/project_model.dart';
-import 'package:billkeeping/data/services/project_mange/project_mange_abstract.dart';
+import 'package:billkeeping/data/services/project_manage/project_manage_abstract.dart';
 import 'package:billkeeping/routes/routes.dart';
 
 class SetProjectPage extends StatelessWidget {
@@ -104,19 +104,19 @@ class SetProjectPage extends StatelessWidget {
   }
 }
 
-class SortProject extends GetView<AbstractProjectMange> {
+class SortProject extends GetView<AbstractProjectManage> {
   const SortProject({Key key, @required this.type}) : super(key: key);
   final String type;
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<AbstractProjectMange>(
+    return GetBuilder<AbstractProjectManage>(
       init: controller,
       builder: (_) => buildDragAndDropLists(_), // buildReorderableListView(_),
     );
   }
 
-  Widget buildDragAndDropLists(AbstractProjectMange _) {
+  Widget buildDragAndDropLists(AbstractProjectManage _) {
     return DragAndDropLists(
       onItemReorder: (int oldItemIndex, int oldListIndex, int newItemIndex, int newListIndex) {
         print('$oldItemIndex 移动到 $newItemIndex');
@@ -186,7 +186,7 @@ class SortProject extends GetView<AbstractProjectMange> {
     );
   }
 
-  Widget buildListTile({AbstractProjectMange aac, ProjectModel item, bool move, int index, BuildContext context}) {
+  Widget buildListTile({AbstractProjectManage aac, ProjectModel item, bool move, int index, BuildContext context}) {
     final child = Container(
       height: 60,
       width: MediaQuery.of(context).size.width,
@@ -235,7 +235,7 @@ class SortProject extends GetView<AbstractProjectMange> {
           );
   }
 
-  ListView buildDraggable(AbstractProjectMange _) {
+  ListView buildDraggable(AbstractProjectManage _) {
     return ListView.builder(
       itemCount: _.projectMap[type].length,
       itemBuilder: (context, index) {
@@ -267,7 +267,7 @@ class SortProject extends GetView<AbstractProjectMange> {
     );
   }
 
-  ReorderableListView buildReorderableListView(AbstractProjectMange _) {
+  ReorderableListView buildReorderableListView(AbstractProjectManage _) {
     return ReorderableListView(
       onReorder: (int oldIndex, int newIndex) {
         print(oldIndex);

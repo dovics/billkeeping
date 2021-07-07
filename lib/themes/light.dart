@@ -4,6 +4,11 @@ final ThemeData themeLight = ThemeData(
   colorScheme: ColorScheme.light(
     brightness: Brightness.light,
   ),
+  appBarTheme: AppBarTheme(
+    iconTheme: IconThemeData(
+      color: Colors.white, //change your color here
+    ),
+  ),
   highlightColor: Color(0xFF527ff9),
   splashColor: Color.fromRGBO(0, 0, 0, 0),
   primaryColor: Color(0xff00BCD5),

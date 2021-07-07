@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:get/get.dart';
 import 'package:billkeeping/common/year_month_picker.dart';
-import 'package:billkeeping/data/services/account_mange/account_mange_abstract.dart';
-import 'package:billkeeping/data/services/account_mange/account_mange_service.dart';
+import 'package:billkeeping/data/services/account_manage/account_manage_abstract.dart';
+import 'package:billkeeping/data/services/account_manage/account_manage_service.dart';
 
 class HomeSum extends StatelessWidget {
   HomeSum({Key key}) : super(key: key);
@@ -12,7 +12,7 @@ class HomeSum extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AccountMangeService ams = Get.find<AbstractAccountMange>();
+    AccountManageService ams = Get.find<AbstractAccountManage>();
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -64,8 +64,8 @@ class HomeSum extends StatelessWidget {
           margin: EdgeInsets.only(right: 24, left: 16),
         ),
         Expanded(
-          child: GetBuilder<AbstractAccountMange>(
-            init: Get.find<AbstractAccountMange>(),
+          child: GetBuilder<AbstractAccountManage>(
+            init: Get.find<AbstractAccountManage>(),
             builder: (_) => Row(
               children: [
                 Expanded(

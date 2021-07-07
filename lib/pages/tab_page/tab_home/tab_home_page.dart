@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
-import 'package:billkeeping/data/services/account_mange/account_mange_abstract.dart';
-import 'package:billkeeping/data/services/account_mange/account_mange_service.dart';
+import 'package:billkeeping/data/services/account_manage/account_manage_abstract.dart';
+import 'package:billkeeping/data/services/account_manage/account_manage_service.dart';
 import 'package:billkeeping/pages/tab_page/tab_home/widgets/home_list.dart';
 import 'package:billkeeping/pages/tab_page/tab_home/widgets/home_sum.dart';
 
@@ -21,13 +21,13 @@ class _TabHomePageState extends State<TabHomePage>
   final double _sumHeight = 80;
   final double _navHeight = 80;
   SlidableController _slidableController;
-  AccountMangeService accountMangeService;
+  AccountManageService accountManageService;
 
   @override
   void initState() {
-    accountMangeService = AccountMangeService();
-    // 注入 AccountMangeService
-    Get.put<AbstractAccountMange>(accountMangeService);
+    accountManageService = AccountManageService();
+    // 注入 AccountManageService
+    Get.put<AbstractAccountManage>(accountManageService);
 
     super.initState();
     _slidableController = SlidableController(

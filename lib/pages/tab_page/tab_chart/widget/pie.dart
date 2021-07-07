@@ -1,5 +1,5 @@
-import 'package:billkeeping/data/services/account_mange/account_mange_abstract.dart';
-import 'package:billkeeping/data/services/account_mange/account_mange_service.dart';
+import 'package:billkeeping/data/services/account_manage/account_manage_abstract.dart';
+import 'package:billkeeping/data/services/account_manage/account_manage_service.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,7 +34,7 @@ class PieChart extends StatelessWidget {
   }
 
   static List<charts.Series<LinearSales, int>> _createData(String type) {
-    AccountMangeService chartManageService = Get.find<AbstractAccountMange>();
+    AccountManageService chartManageService = Get.find<AbstractAccountManage>();
     final maps = chartManageService.getPieData(type);
 
     final data = [

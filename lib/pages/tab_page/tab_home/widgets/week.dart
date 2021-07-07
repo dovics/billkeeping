@@ -4,8 +4,8 @@ import 'package:flutter/gestures.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:billkeeping/data/services/account_mange/account_mange_abstract.dart';
-import 'package:billkeeping/data/services/account_mange/account_mange_service.dart';
+import 'package:billkeeping/data/services/account_manage/account_manage_abstract.dart';
+import 'package:billkeeping/data/services/account_manage/account_manage_service.dart';
 
 class BarChartSample1 extends StatefulWidget {
   final List<Color> availableColors = [
@@ -121,7 +121,7 @@ class BarChartSample1State extends State<BarChartSample1> {
   }
 
   List<BarChartGroupData> showingGroups() {
-    AccountMangeService chartManageService = Get.find<AbstractAccountMange>();
+    AccountManageService chartManageService = Get.find<AbstractAccountManage>();
     var lists = chartManageService.weekDailySum;
     double max = 20;
     lists.forEach((element) {

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:billkeeping/data/models/account_info_model.dart';
 import 'package:billkeeping/data/models/sum_account_model.dart';
 
-abstract class AbstractAccountMange extends GetxController {
+abstract class AbstractAccountManage extends GetxController {
   // 当前时间
   String curDate;
   // 过渡方向

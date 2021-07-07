@@ -1,7 +1,7 @@
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
-import 'package:billkeeping/data/services/account_mange/account_mange_abstract.dart';
-import 'package:billkeeping/data/services/account_mange/account_mange_service.dart';
+import 'package:billkeeping/data/services/account_manage/account_manage_abstract.dart';
+import 'package:billkeeping/data/services/account_manage/account_manage_service.dart';
 import 'package:get/get.dart';
 
 class BarChart extends StatelessWidget {
@@ -29,7 +29,7 @@ class BarChart extends StatelessWidget {
 
   /// Create one series with sample hard coded data.
   static List<charts.Series<OrdinalSales, String>> _createData(String type) {
-    AccountMangeService chartManageService = Get.find<AbstractAccountMange>();
+    AccountManageService chartManageService = Get.find<AbstractAccountManage>();
     final maps = chartManageService.getBarData(type);
     List<OrdinalSales> data = List.empty(growable: true);
 
