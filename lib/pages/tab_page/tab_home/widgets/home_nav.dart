@@ -17,9 +17,7 @@ class HomeNav extends StatelessWidget {
         children: [
           Expanded(
             child: GestureDetector(
-              onTap: () => {
-                Get.toNamed(AppRoutes.AllAccounts)
-              },
+              onTap: () => {Get.toNamed(AppRoutes.Account)},
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -30,21 +28,27 @@ class HomeNav extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Icon(Icons.attach_money_rounded, size: 32),
-                Text('预算')
-              ],
+            child: GestureDetector(
+              onTap: () => {Get.toNamed(AppRoutes.Timeline)},
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Icon(Icons.timeline, size: 32),
+                  Text('时间线')
+                ],
+              ),
             ),
           ),
           Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Icon(Icons.verified_user_rounded, size: 32),
-                Text('资产管理')
-              ],
+            child: GestureDetector(
+              onTap: () => {Get.toNamed(AppRoutes.Timeline)},
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Icon(Icons.verified_user_rounded, size: 32),
+                  Text('资产管理')
+                ],
+              ),
             ),
           ),
         ],
