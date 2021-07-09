@@ -25,6 +25,7 @@ class DbHelper {
       );
       debugPrint('open datebase end');
     }
+
     return _db;
   }
 
@@ -35,7 +36,8 @@ class DbHelper {
   ///判断表是否存在
   static Future<bool> isTableExits(String tableName) async {
     await getDb();
-    var res = await _db.rawQuery("select * from Sqlite_master where type = 'table' and name = '$tableName'");
+    var res = await _db.rawQuery(
+        "select * from Sqlite_master where type = 'table' and name = '$tableName'");
     return res != null && res.length > 0;
   }
 
@@ -119,18 +121,29 @@ class DbHelper {
     await _initProject(income, db, 2);
   }
 
-  static Future<void> _initProject(Map<String, String> map, Database db, int type) {
+  static Future<void> _initProject(
+      Map<String, String> map, Database db, int type) {
     int _index = 0;
     var batch = db.batch();
     map.forEach((key, value) async {
-      batch.rawInsert(insertProject(name: value, iconStr: key, type: type, sort: _index, isDefault: true));
+      batch.rawInsert(insertProject(
+          name: value,
+          iconStr: key,
+          type: type,
+          sort: _index,
+          isDefault: true));
       _index++;
     });
     return batch.commit();
   }
 
   // 新增类别
-  static String insertProject({@required String name, @required int sort, int type = 1, @required String iconStr, bool isDefault = false}) {
+  static String insertProject(
+      {@required String name,
+      @required int sort,
+      int type = 1,
+      @required String iconStr,
+      bool isDefault = false}) {
     return '''INSERT INTO project (name,type,icon,sort,isDefault) VALUES('$name',$type,'$iconStr',$sort,$isDefault);''';
   }
 }
