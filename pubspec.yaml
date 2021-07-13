@@ -38,7 +38,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   timeline_tile: ^2.0.0
   date_picker_timeline: ^1.2.3
-  minio: 2.0.0-pre
 dev_dependencies:
   flutter_test:
     sdk: flutter
