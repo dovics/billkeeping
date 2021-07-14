@@ -52,7 +52,7 @@ class _AccountState extends State<AccountPage> {
               },
             ),
             Container(
-              height: MediaQuery.of(context).size.height - 150,
+              height: MediaQuery.of(context).size.height - 200,
               child: ListView.separated(
                 padding: EdgeInsets.zero,
                 itemCount: controller.accountByDate.length,

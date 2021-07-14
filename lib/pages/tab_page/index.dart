@@ -16,8 +16,8 @@ class _HomaPageState extends State<HomaPage> {
   List<Widget> pages = [
     TabHomePage(),
     TabChartPage(),
-    TabMyPage(),
-    TabMyPage(),
+    // TabMyPage(),
+    // TabMyPage(),
   ];
 
   @override
@@ -61,20 +61,21 @@ class _HomaPageState extends State<HomaPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.bar_chart),
-            label: '图表',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart),
             label: '记一笔',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: '社区',
+            icon: Icon(Icons.bar_chart),
+            label: '图表',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: '我的',
-          ),
+          
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.business),
+          //   label: '社区',
+          // ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.account_circle),
+          //   label: '我的',
+          // ),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

@@ -6,11 +6,10 @@ import 'package:get/get.dart';
 import 'package:billkeeping/pages/tab_page/index.dart';
 import 'package:billkeeping/routes/routes.dart';
 import 'package:billkeeping/themes/light.dart';
-import 'package:billkeeping/themes/theme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  print(ThemeDataInfo() == ThemeDataInfo());
+  // print(ThemeDataInfo() == ThemeDataInfo());
 
   runApp(
     GetMaterialApp(

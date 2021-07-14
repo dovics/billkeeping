@@ -31,6 +31,6 @@ class Time extends StatelessWidget {
   final DateTime date;
   @override
   Widget build(BuildContext context) {
-    return Text(date.hour.toString() + ":" + (date.minute == 0? "00":date.minute.toString()));
+    return Text(date.hour.toString() + ":" + (date.minute == 0? "00": date.minute < 10 ? "0" + date.minute.toString(): date.minute.toString()));
   }
 }
