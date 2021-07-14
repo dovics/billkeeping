@@ -6,11 +6,12 @@ import 'package:get/get.dart';
 import 'package:billkeeping/pages/tab_page/index.dart';
 import 'package:billkeeping/routes/routes.dart';
 import 'package:billkeeping/themes/light.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   // print(ThemeDataInfo() == ThemeDataInfo());
-
+  checkPermission();
   runApp(
     GetMaterialApp(
       title: 'billkeeping',
@@ -21,4 +22,14 @@ void main() {
       home: HomaPage(),
     ),
   );
+}
+
+void checkPermission() async {
+  while (true) {
+    if (await Permission.storage.isDenied) {
+      await Permission.storage.request();
+      continue;
+    }
+    return;
+  }
 }
