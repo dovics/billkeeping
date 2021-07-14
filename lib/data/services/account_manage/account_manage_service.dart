@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:billkeeping/data/models/account_info_model.dart';
 import 'package:billkeeping/data/models/sum_account_model.dart';
 import 'package:billkeeping/data/provider/account_db_provider.dart';
-import 'package:billkeeping/data/services/account_mange/account_mange_abstract.dart';
+import 'package:billkeeping/data/services/account_manage/account_manage_abstract.dart';
 import 'package:billkeeping/data/provider/chart_db_provider.dart';
 
-class AccountMangeService extends AbstractAccountMange {
+class AccountManageService extends AbstractAccountManage {
   @override
   void deleteAccount(int id) {}
 

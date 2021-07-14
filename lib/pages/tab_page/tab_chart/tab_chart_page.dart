@@ -15,7 +15,10 @@ class TabChartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('统计信息'),
+          title: Text(
+            '统计信息',
+            style: TextStyle(color: Colors.white),
+          ),
           centerTitle: true,
           elevation: 0.0,
           bottom: PreferredSize(

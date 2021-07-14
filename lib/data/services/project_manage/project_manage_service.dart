@@ -1,10 +1,10 @@
 import 'package:billkeeping/common/db_helper.dart';
 import 'package:billkeeping/data/models/project_model.dart';
 import 'package:billkeeping/data/provider/project_db_provider.dart';
-import 'package:billkeeping/data/services/project_mange/project_mange_abstract.dart';
+import 'package:billkeeping/data/services/project_manage/project_manage_abstract.dart';
 import 'package:sqflite/sqlite_api.dart';
 
-class ProjectMangeService extends AbstractProjectMange {
+class ProjectManageService extends AbstractProjectManage {
   List<ProjectModel> get payProjects => projectMap['pay'];
   List<ProjectModel> get incomeProjects => projectMap['income'];
 

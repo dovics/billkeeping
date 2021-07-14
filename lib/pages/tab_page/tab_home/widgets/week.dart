@@ -4,8 +4,8 @@ import 'package:flutter/gestures.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:billkeeping/data/services/account_mange/account_mange_abstract.dart';
-import 'package:billkeeping/data/services/account_mange/account_mange_service.dart';
+import 'package:billkeeping/data/services/account_manage/account_manage_abstract.dart';
+import 'package:billkeeping/data/services/account_manage/account_manage_service.dart';
 
 class BarChartSample1 extends StatefulWidget {
   final List<Color> availableColors = [
@@ -31,63 +31,67 @@ class BarChartSample1State extends State<BarChartSample1> {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 1.3,
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-        color: const Color(0xffB3ECF5),
-        child: Stack(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  Text(
-                    '本周记账',
-                    style: TextStyle(
-                        color: const Color(0xff012061),
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                      child: BarChart(
-                        isPlaying ? randomData() : mainBarData(),
-                        swapAnimationDuration: animDuration,
+    return GetBuilder<AbstractAccountManage>(
+      init: Get.find<AbstractAccountManage>(),
+      builder: (controller) => AspectRatio(
+        aspectRatio: 1.3,
+        child: Card(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+          color: const Color(0xffB3ECF5),
+          child: Stack(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    Text(
+                      '本周记账',
+                      style: TextStyle(
+                          color: const Color(0xff012061),
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                        child: BarChart(
+                          isPlaying ? randomData() : mainBarData(controller),
+                          swapAnimationDuration: animDuration,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Align(
-                alignment: Alignment.topRight,
-                child: IconButton(
-                  icon: Icon(
-                    isPlaying ? Icons.pause : Icons.play_arrow,
-                    color: const Color(0xff012061),
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      isPlaying = !isPlaying;
-                      if (isPlaying) {
-                        refreshState();
-                      }
-                    });
-                  },
+                  ],
                 ),
               ),
-            )
-          ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: IconButton(
+                    icon: Icon(
+                      isPlaying ? Icons.pause : Icons.play_arrow,
+                      color: const Color(0xff012061),
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        isPlaying = !isPlaying;
+                        if (isPlaying) {
+                          refreshState();
+                        }
+                      });
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -120,38 +124,44 @@ class BarChartSample1State extends State<BarChartSample1> {
     );
   }
 
-  List<BarChartGroupData> showingGroups() {
-    AccountMangeService chartManageService = Get.find<AbstractAccountMange>();
-    var lists = chartManageService.weekDailySum;
+  List<BarChartGroupData> showingGroups(AbstractAccountManage  controller) {
+    var lists = controller.weekDailySum;
     double max = 20;
     lists.forEach((element) {
-     if(element > max) {
-       max = element;
-     } 
+      if (element > max) {
+        max = element;
+      }
     });
     return List.generate(7, (i) {
       switch (i) {
         case 0:
-          return makeGroupData(0, lists[0], isTouched: i == touchedIndex, height: max);
+          return makeGroupData(0, lists[0],
+              isTouched: i == touchedIndex, height: max);
         case 1:
-          return makeGroupData(1, lists[1], isTouched: i == touchedIndex, height: max);
+          return makeGroupData(1, lists[1],
+              isTouched: i == touchedIndex, height: max);
         case 2:
-          return makeGroupData(2, lists[2], isTouched: i == touchedIndex, height: max);
+          return makeGroupData(2, lists[2],
+              isTouched: i == touchedIndex, height: max);
         case 3:
-          return makeGroupData(3, lists[3], isTouched: i == touchedIndex, height: max);
+          return makeGroupData(3, lists[3],
+              isTouched: i == touchedIndex, height: max);
         case 4:
-          return makeGroupData(4, lists[4], isTouched: i == touchedIndex, height: max);
+          return makeGroupData(4, lists[4],
+              isTouched: i == touchedIndex, height: max);
         case 5:
-          return makeGroupData(5, lists[5], isTouched: i == touchedIndex, height: max);
+          return makeGroupData(5, lists[5],
+              isTouched: i == touchedIndex, height: max);
         case 6:
-          return makeGroupData(6, lists[6], isTouched: i == touchedIndex, height: max);
+          return makeGroupData(6, lists[6],
+              isTouched: i == touchedIndex, height: max);
         default:
           return throw Error();
       }
     });
   }
 
-  BarChartData mainBarData() {
+  BarChartData mainBarData(AbstractAccountManage controller) {
     return BarChartData(
       barTouchData: BarTouchData(
         touchTooltipData: BarTouchTooltipData(
@@ -249,7 +259,7 @@ class BarChartSample1State extends State<BarChartSample1> {
       borderData: FlBorderData(
         show: false,
       ),
-      barGroups: showingGroups(),
+      barGroups: showingGroups(controller),
     );
   }
 

@@ -5,44 +5,24 @@ import 'package:sqflite/sqlite_api.dart';
 class TabMyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
+    return Center(child: Column(children: [
       ElevatedButton(
         child: Text(DateTime.now().toString().substring(0, 10)),
         onPressed: () {
-          getYearSumByProject(DateTime.now().toString());
+          getAccountsInfoByDate(DateTime.now());
         },
       ),
-      ElevatedButton(
-        child: Text(DateTime.now().toString().substring(0, 10)),
-        onPressed: () {
-          getWeekSumByProject(DateTime.now().toString().substring(0, 10));
-        },
-      ),
-    ]);
+    ]));
   }
 }
 
-Future<List<Map<String, dynamic>>> getYearSumByProject(String date) async {
-  Database db = await DbHelper.getDb();
-  final List<Map<String, dynamic>> maps = await db.rawQuery('''
-      SELECT strftime('%w', a.date) weekday, ifnull(SUM(a.payMoney), 0) payMoney FROM account a 
-      WHERE a.date >= date('$date', 'localtime', 'weekday 1', '-7 day', 'start of day')
-      GROUP BY weekday;
+Future<void> getAccountsInfoByDate(DateTime date) async {
+     Database db = await DbHelper.getDb();
+     var dateString = date.toString().substring(0, 10);
+    final List<Map<String, dynamic>> maps = await db.rawQuery('''
+      SELECT a.id,a.projectID,p.name,a.type,p.icon,a.date,a.remark,CASE WHEN a.type = 1 THEN a.payMoney ELSE a.incomeMoney END money
+      FROM account a LEFT JOIN project p on a.projectID=p.id
+      WHERE strftime('%Y-%m-%d', a.date) = '$dateString'
     ''');
-
-  print(maps);
-  return maps;
-}
-
-Future<List<Map<String, dynamic>>> getWeekSumByProject(String date) async {
-  Database db = await DbHelper.getDb();
-  final List<Map<String, dynamic>> maps = await db.rawQuery('''
-      SELECT p.name, ifnull(SUM(a.payMoney), 0) payMoney
-      FROM account a LEFT JOIN project p ON p.id = a.projectID 
-       WHERE a.date >= date('$date', 'localtime', 'weekday 1', '-7 day', 'start of day');
-      AND a.type = 1
-      GROUP BY a.projectID;
-    ''');
-  print(maps);
-  return maps;
-}
+    print(maps);
+  }

@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:billkeeping/common/iconfont.dart';
 import 'package:billkeeping/data/models/account_info_model.dart';
 import 'package:billkeeping/data/models/project_model.dart';
-import 'package:billkeeping/data/services/account_mange/account_mange_abstract.dart';
-import 'package:billkeeping/data/services/project_mange/project_mange_abstract.dart';
+import 'package:billkeeping/data/services/account_manage/account_manage_abstract.dart';
+import 'package:billkeeping/data/services/project_manage/project_manage_abstract.dart';
 import 'package:billkeeping/routes/routes.dart';
 import 'package:billkeeping/widgets/calculator.dart';
 
@@ -17,7 +17,7 @@ class TypeModel {
   TypeModel({this.type, this.key, this.title, this.id});
 }
 
-class AddAccountPage extends GetView<AbstractAccountMange> {
+class AddAccountPage extends GetView<AbstractAccountManage> {
   final List<TypeModel> _map = [
     TypeModel(key: 'pay', title: '支出', id: 0, type: 1),
     TypeModel(key: 'income', title: '收入', id: 0, type: 2),
@@ -94,7 +94,7 @@ class AddAccountPage extends GetView<AbstractAccountMange> {
 }
 
 // 类别格子
-class ProjectGridView extends GetView<AbstractProjectMange> {
+class ProjectGridView extends GetView<AbstractProjectManage> {
   ProjectGridView({Key key, @required this.projectType, this.callback}) : super(key: key);
   final String projectType;
   final Function callback;
@@ -109,7 +109,7 @@ class ProjectGridView extends GetView<AbstractProjectMange> {
     return SingleChildScrollView(
       padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
       physics: BouncingScrollPhysics(),
-      child: GetBuilder<AbstractProjectMange>(
+      child: GetBuilder<AbstractProjectManage>(
         init: controller,
         builder: (_) {
           return Wrap(
@@ -121,7 +121,7 @@ class ProjectGridView extends GetView<AbstractProjectMange> {
     );
   }
 
-  Widget buildItemIcon(BuildContext context, AbstractProjectMange _, ProjectModel project) {
+  Widget buildItemIcon(BuildContext context, AbstractProjectManage _, ProjectModel project) {
     return Obx(
       () => GestureDetector(
         onTap: () {
