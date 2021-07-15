@@ -15,8 +15,8 @@ class _HomaPageState extends State<HomaPage> {
   PageController _pageController;
   List<Widget> pages = [
     TabHomePage(),
+    TabMyPage(),
     TabChartPage(),
-    // TabMyPage(),
     // TabMyPage(),
   ];
 
@@ -27,7 +27,7 @@ class _HomaPageState extends State<HomaPage> {
   }
 
   void _changePage(int index) {
-    if (index == 2) {
+    if (index == 1) {
       return;
     }
     if (index != currentIndex) {

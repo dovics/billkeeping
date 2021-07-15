@@ -180,7 +180,7 @@ class CalculatorWidget extends StatelessWidget {
                 Container(
                   child: Center(
                     child: Text(
-                      '备注：',
+                      '',
                       style: TextStyle(
                         fontSize: 18,
                       ),
@@ -192,7 +192,7 @@ class CalculatorWidget extends StatelessWidget {
                     onTap: () {
                       showInput(context);
                     },
-                    child: Text('点击写入备注'),
+                    child: Text(""),
                   ), /* TextField(
                     maxLines: 1,
                     decoration: InputDecoration(
